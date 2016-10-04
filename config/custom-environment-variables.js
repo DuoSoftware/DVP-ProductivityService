@@ -10,7 +10,7 @@ module.exports = {
     "Host":
     {
         "domain": "HOST_NAME",
-        "port": "HOST_RESOURCESERVICE_PORT",
+        "port": "HOST_PRODUCTIVITYSERVICE_PORT",
         "version": "HOST_VERSION",
         "hostpath":"HOST_PATH",
         "logfilepath": "LOG4JS_CONFIG"
@@ -20,8 +20,8 @@ module.exports = {
         "ip": "SYS_REDIS_HOST",
         "port": "SYS_REDIS_PORT",
         "password":"SYS_REDIS_PASSWORD",
-        "redisdb":"SYS_REDIS_DB",
-        "ardsData":"SYS_ARDS_DB"
+        "redisdb":"SYS_DASHBOARD_REDIS_DB",
+        "ardsData":"SYS_ARDS_REDIS_DB"
     }
     ,
 
