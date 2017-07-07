@@ -54,12 +54,11 @@ var PublishToRedis = function(reqId, pattern, message, callback)
 {
     try
     {
-       if(client.connected)
-        {
-            var result = client.publish(pattern, message);
-
-        }
+        var result = client.publish(pattern, message);
         callback(undefined, true);
+
+      
+        
 
     }
     catch(ex)
@@ -73,18 +72,11 @@ var GetFromSet = function(reqId, setName, callback)
 {
     try
     {
-         if(client.connected)
-        {
-            client.smembers(setName, function (err, setValues)
+        client.smembers(setName, function (err, setValues)
             {
                  callback(err, setValues);
             });
-        }
-        else
-        {
-            callback(new Error('Redis Client Disconnected'), undefined);
-        }
-
+       
 
     }
     catch(ex)
@@ -98,18 +90,12 @@ var GetFromHash = function(reqId, hashName, callback)
 {
     try
     {
-        if(client.connected)
-        {
-            client.hgetall(hashName, function (err, hashObj)
+        client.hgetall(hashName, function (err, hashObj)
             {
 
                 callback(err, hashObj);
             });
-        }
-        else
-        {
-            callback(new Error('Redis Client Disconnected'), undefined);
-        }
+       
     }
     catch(ex)
     {
@@ -140,18 +126,11 @@ var MGetObjects = function(reqId, keyArr, callback)
 
 var GetKeys = function(reqId, pattern, callback)
 {
-    if(client.connected)
-    {
-        client.keys(pattern, function (err, keyArr)
+     client.keys(pattern, function (err, keyArr)
         {
 
             callback(err, keyArr);
         });
-    }
-    else
-    {
-        callback(new Error('Redis Client Disconnected'), undefined);
-    }
 };
 
 client.on('error', function(msg)
